@@ -1,0 +1,64 @@
+<h2 mat-dialog-title>اضافه کردن کاربر</h2>
+<mat-dialog-content class="mat-typography" >
+
+  <form action="" [formGroup]="userList" (submit)="reigester()">
+
+    <mat-form-field class="form" appearance="fill" >
+      <mat-label>نام</mat-label>
+      <input matInput placeholder="نام" formControlName="name">
+
+    </mat-form-field>
+
+    <mat-form-field class="form" appearance="fill" >
+      <mat-label>نام خانوادگی</mat-label>
+      <input matInput placeholder=" نام خانوادگی" formControlName="familyName">
+
+    </mat-form-field>
+
+      <mat-form-field class="form" appearance="fill">
+    <mat-label>رمز عبور</mat-label>
+    <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>تاریخ تولد</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="birthday">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <section class="example-section">
+    <label class="example-margin">جنسیت:</label>
+    <mat-radio-group formControlName="jenders">
+      <mat-radio-button *ngFor="let jender of jenders" class="example-margin" [value]="jender">{{jender}}</mat-radio-button>
+    </mat-radio-group>
+  </section>
+
+  <mat-form-field class="form" appearance="fill">
+    <mat-label>استان</mat-label>
+    <input matInput placeholder="استان" formControlName="ostan">
+
+  </mat-form-field>
+
+  <mat-form-field class="form" appearance="fill">
+    <mat-label>شهر</mat-label>
+    <input matInput placeholder="شهر" formControlName="shahr">
+
+  </mat-form-field>
+  </form>
+
+
+
+
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close color="warn">بستن</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial color="primary" (click)="reigester()">{{upbtn}}</button>
+</mat-dialog-actions>
+
+
