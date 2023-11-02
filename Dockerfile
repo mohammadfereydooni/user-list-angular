@@ -1,4 +1,6 @@
-FROM ubuntu:latest
-LABEL authors="hesam"
+FROM didar/nginx:latest
 
-ENTRYPOINT ["top", "-b"]
+COPY ./dist/user-list /usr/share/nginx/html
+
+EXPOSE 80
+

@@ -13,6 +13,8 @@ import { ApiService } from '../services/api.service';
 import { UserData } from '../model/user';
 import { DialogComponent } from '../dialog/dialog.component';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { FormControl } from '@angular/forms';
+import { th } from 'date-fns/locale';
 
 @Component({
   selector: 'app-table',
@@ -20,6 +22,19 @@ import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./table.component.scss'],
 })
 export class TableComponent implements OnInit {
+
+  acces!:boolean;
+
+
+  toppingList: string[] = [
+    'شنبه',
+    'یکشنبه',
+    'دوشنبه',
+    'سه شنبه',
+    'چهارشنبه',
+    'پنجشنبه',
+  ];
+
   displayedColumns: string[] = [
     'id',
     'name',
@@ -28,6 +43,7 @@ export class TableComponent implements OnInit {
     'ostan',
     'shahr',
     'manegment',
+    'select',
   ];
   dataSource!: MatTableDataSource<UserData[]>;
 
@@ -40,7 +56,7 @@ export class TableComponent implements OnInit {
   }
 
   getAll() {
-    this.api.getUser().subscribe({
+    this.api.getUsers().subscribe({
       next: (res) => {
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.paginator = this.paginator;
@@ -65,11 +81,24 @@ export class TableComponent implements OnInit {
   }
 
   deleteUser(id: number) {
-    this.api.deletUser(id).subscribe({
+    this.api.deleteUser(id).subscribe({
       next: (res) => {
         alert('کاربر حذف شد !');
         this.getAll();
       },
     });
   }
+
+  yes(row: UserData) {
+    console.log(row.attendance);
+
+    console.log(row);
+
+    this.api.putUser(row, row.id).subscribe({
+      next: (res) => {
+        alert('تغییرات اعمال شد !');
+      },
+    });
+  }
+
 }

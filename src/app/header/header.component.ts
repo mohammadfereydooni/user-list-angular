@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import { DialogComponent  } from '../dialog/dialog.component';
+import {ApiService} from "../services/api.service";
+import {UserData} from "../model/user";
+import {delay} from "rxjs";
 
 @Component({
   selector: 'app-header',
@@ -8,8 +11,8 @@ import { DialogComponent  } from '../dialog/dialog.component';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-
-  constructor(public dialog: MatDialog) {}
+  data!: UserData[];
+  constructor(public dialog: MatDialog,private api:ApiService) {}
 
 
 
@@ -23,4 +26,16 @@ export class HeaderComponent {
     });
   }
 
+   async resetWeek(){
+
+    this.api.getUsers().subscribe((res)=> {
+      this.data=res
+      this.data.forEach(async(user)=>{
+        this.api.updateUser({attendance:[]},user.id).subscribe((res)=>{
+        })
+      })
+      window.alert("هفته جدید آغاز شد")
+      location.reload()
+    })
   }
+}

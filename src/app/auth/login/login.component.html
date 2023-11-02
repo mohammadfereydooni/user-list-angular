@@ -1,0 +1,23 @@
+<div class="container">
+
+
+<form action="" [formGroup]="form" (submit)="singup()">
+
+  <mat-form-field appearance="fill">
+    <mat-label>نام کاربری</mat-label>
+    <input matInput placeholder="نام کاربری" formControlName="username">
+  </mat-form-field>
+
+
+  <mat-form-field appearance="fill">
+    <mat-label>رمز عبور</mat-label>
+    <input matInput placeholder="رمز عبور" type="password" formControlName="password">
+  </mat-form-field>
+
+  <!-- <button [disabled]="form.invalid" mat-button color="warn" class="button">Accent</button> -->
+
+  <button  mat-raised-button color="accent" class="button">Accent</button>
+
+</form>
+
+</div>

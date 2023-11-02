@@ -3,9 +3,11 @@
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
       <mat-icon>menu</mat-icon>
     </button>
-    <span>My App</span>
+    <span>ثبت حضور صبحانه شرکت</span>
     <span class="example-spacer"></span>
     <button mat-raised-button color="warn" (click)="openDialog()">ثبت کاربر</button>
+    <button mat-raised-button color="accent" ><a routerLink="/result"> مشاهده روزهای حضور</a></button>
+    <button mat-raised-button color="accent" (click)="resetWeek()">شروع هفته</button>
 
   </mat-toolbar>
 </p>

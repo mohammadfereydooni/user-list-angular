@@ -2,7 +2,7 @@
 
 
 <mat-form-field>
-  <mat-label>Filter</mat-label>
+  <mat-label>جوستجو</mat-label>
   <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
 </mat-form-field>
 
@@ -64,6 +64,26 @@
       </td>
     </ng-container>
 
+     <!-- shahr Column -->
+     <ng-container matColumnDef="select">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>  روزهای حضور </th>
+      <td mat-cell *matCellDef="let row">
+
+      <mat-form-field class="selectDay">
+        <mat-label>انتخاب روزهای هفته</mat-label>
+        <mat-select [(ngModel)]="row.attendance" (submit)="yes(row)" multiple>
+          <mat-select-trigger>
+            {{row.attendance?.[0] || ''}}
+            <span *ngIf="(row.attendance?.length || 0) > 1" class="example-additional-selection">
+              (+{{(row.attendance?.length || 0) - 1}} {{row.attendance?.length === 2 ? 'روز' : 'روز'}})
+            </span>
+          </mat-select-trigger>
+          <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button mat-raised-button color="primary" style="margin-right: 20px;" (click)="yes(row)">ثبت</button>
+    </td>
+    </ng-container>
 
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

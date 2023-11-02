@@ -1,3 +1,15 @@
+@import "../../font/Webfonts/fontiran.css";
+
+
+th{
+
+  font-family:IRANSansX,sans-serif,IRANSansX !important;
+}
+td{
+  font-family:IRANSansX,sans-serif,IRANSansX !important;
+}
+
+
 table {
   width: 100%;
 }
@@ -13,9 +25,15 @@ table {
   border-radius: 10px;
   margin: 10px;
 
+
+}
+.mat-mdc-text-field-wrapper {
+  width: 198px;
 }
 
-
-
-
-
+.selectDay{
+  width: 190px;
+}
+button{
+  font-family:IRANSansX,sans-serif,IRANSansX !important;
+}

@@ -7,5 +7,11 @@ export interface UserData {
   jenders:string;
   ostan:string;
   shahr:string;
-
+  attendance:string[];
 }
+
+export interface day{
+  name:string;
+  count:number;
+}
+

@@ -28,7 +28,8 @@ export class DialogComponent implements OnInit {
       birthday: ['', Validators.required],
       jenders: ['', Validators.required],
       ostan: ['', Validators.required],
-      shahr: ['', Validators.required]
+      shahr: ['', Validators.required],
+      attendance: ['']
 
     })
     if (this.editdata){
@@ -39,6 +40,7 @@ export class DialogComponent implements OnInit {
       this.userList.controls['jenders'].setValue(this.editdata.jenders);
       this.userList.controls['ostan'].setValue(this.editdata.ostan);
       this.userList.controls['shahr'].setValue(this.editdata.shahr);
+      this.userList.controls['attendance'].setValue(this.editdata.attendance)
     }
   }
 
@@ -46,7 +48,7 @@ export class DialogComponent implements OnInit {
   reigester(){
   if (!this.editdata){
     if (this.userList.valid){
-      this.api.postUser(this.userList.value).subscribe({
+      this.api.saveUser(this.userList.value).subscribe({
         next:(res)=>{
           alert ("کاربر با موفقیت ثبت شد");
           location.reload();
@@ -76,6 +78,6 @@ export class DialogComponent implements OnInit {
     })
   }
 
- 
+
 
 }

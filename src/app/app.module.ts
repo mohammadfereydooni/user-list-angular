@@ -16,13 +16,24 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule } from '@angular/material/core';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { TableComponent } from './table/table.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import { CounterComponent } from './counter/counter.component';
+import { ReactiveFormsModule,FormsModule } from '@angular/forms';
+import {MatSelectModule} from '@angular/material/select';
+import { WeekCalendarComponent } from './week-calendar/week-calendar.component';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { ResultComponent } from './result/result.component';
+import { HomeComponent } from './home/home.component';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatListModule} from '@angular/material/list';
+import { CelenderComponent } from './celender/celender.component';
+import { AuthModule } from './auth/auth.module';
+
 
 
 
@@ -35,7 +46,12 @@ import { CounterComponent } from './counter/counter.component';
     HeaderComponent,
     DialogComponent,
     TableComponent,
-    CounterComponent
+    CounterComponent,
+    WeekCalendarComponent,
+    ResultComponent,
+    HomeComponent,
+    CelenderComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -51,12 +67,23 @@ import { CounterComponent } from './counter/counter.component';
     MatNativeDateModule,
     MatCheckboxModule,
     MatRadioModule,
-    ReactiveFormsModule,
-    FormsModule,
     HttpClientModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    ReactiveFormsModule,
+    MatSelectModule,
+    FormsModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    }),
+    MatDividerModule,
+    MatListModule,
+    AuthModule
+
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]

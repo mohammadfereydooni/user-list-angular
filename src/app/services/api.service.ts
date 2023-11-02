@@ -10,23 +10,24 @@ export class ApiService {
 
   constructor(private http : HttpClient) { }
 
-  postUser(data : any){
+  saveUser(data : any){
     return this.http.post<any>("http://localhost:3000/userList/" , data)
   }
 
-  getUser(){
+  getUsers(){
     return this.http.get<any>("http://localhost:3000/userList/")
   }
 
   putUser(data : any , id:number ){
-
     return this.http.put<any>("http://localhost:3000/userList/" +id ,data)
-
   }
 
-  deletUser( id:number){
-
+  deleteUser(id:number){
     return this.http.delete<any>("http://localhost:3000/userList/"+id )
-
   }
+
+  updateUser(data:any,id:number){
+    return this.http.patch("http://localhost:3000/userList/"+id,data)
+  }
+
 }
