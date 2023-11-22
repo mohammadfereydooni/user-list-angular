@@ -2,7 +2,7 @@
 
 
 <mat-form-field>
-  <mat-label>جوستجو</mat-label>
+  <mat-label>جستوجو</mat-label>
   <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
 </mat-form-field>
 
@@ -71,7 +71,7 @@
 
       <mat-form-field class="selectDay">
         <mat-label>انتخاب روزهای هفته</mat-label>
-        <mat-select [(ngModel)]="row.attendance" (submit)="yes(row)" multiple>
+        <mat-select [(ngModel)]="row.attendance" (submit)="yes(row)" multiple [disabled]="userName === row.name">
           <mat-select-trigger>
             {{row.attendance?.[0] || ''}}
             <span *ngIf="(row.attendance?.length || 0) > 1" class="example-additional-selection">

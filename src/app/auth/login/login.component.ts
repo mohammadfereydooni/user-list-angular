@@ -12,6 +12,15 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
+  isLoggedIn$ = this.authServices.isLoggedIn;
+
+  userRoles$ = this.authServices.userRoles;
+
+
+    userRole! : number |null;
+
+    userName! :number;
+
   allUsers!: UserData[];
 
   // login :boolean = false;
@@ -24,7 +33,21 @@ export class LoginComponent implements OnInit {
 
   constructor(private api: ApiService, private authServices:AuthService,private router:Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+    this.userRoles$.subscribe(roles=>{
+      if(roles.includes('admin')){
+        this.userRole = 1
+      }
+      else
+      this.userRole = 2
+    })
+
+    this.authServices.userRole = this.userRole
+   
+
+
+  }
 
   singup() {
 
@@ -32,6 +55,8 @@ export class LoginComponent implements OnInit {
       this.authServices.singup(this.form.value.username as string,this.form.value.password as string);
 
       this.router.navigate(['/inbox']);
+
+
 
 
     // this.api.getUsers().subscribe({

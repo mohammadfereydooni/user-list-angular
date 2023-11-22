@@ -1,7 +1,7 @@
 {
   "userList": [
     {
-      "name": " محمد ",
+      "name": " 51محمد ",
       "familyName": "رخشان",
       "password": "123456",
       "birthday": "2023-05-15T20:30:00.000Z",
@@ -9,6 +9,7 @@
       "ostan": "تهران",
       "shahr": "تهران",
       "id": 1,
+      "userRole": "admin",
       "attendance": []
     },
     {
@@ -20,6 +21,7 @@
       "ostan": "تهران",
       "shahr": "تهران",
       "id": 2,
+      "userRole": "user",
       "attendance": []
     },
     {
@@ -31,6 +33,7 @@
       "ostan": "تهران",
       "shahr": "تهران",
       "id": 3,
+      "userRole": "user",
       "attendance": []
     },
     {
@@ -42,6 +45,7 @@
       "ostan": "تهران ",
       "shahr": "تهران",
       "id": 4,
+      "userRole": "user",
       "attendance": []
     },
     {
@@ -53,6 +57,7 @@
       "ostan": "تهران",
       "shahr": "تهران",
       "id": 5,
+      "userRole": "user",
       "attendance": []
     },
     {
@@ -64,6 +69,7 @@
       "ostan": "تهران",
       "shahr": "تهران",
       "id": 6,
+      "userRole": "user",
       "attendance": []
     },
     {
@@ -75,6 +81,7 @@
       "ostan": "تهران",
       "shahr": "تهران",
       "id": 7,
+      "userRole": "admin",
       "attendance": []
     },
     {
@@ -86,6 +93,7 @@
       "ostan": "تهران ",
       "shahr": "تهران",
       "id": 8,
+      "userRole": "user",
       "attendance": []
     },
     {
@@ -97,6 +105,7 @@
       "ostan": "تهران",
       "shahr": "تهران",
       "id": 9,
+      "userRole": "user",
       "attendance": []
     },
     {
@@ -108,6 +117,7 @@
       "ostan": "تهران",
       "shahr": "تهران",
       "id": 10,
+      "userRole": "user",
       "attendance": []
     },
     {
@@ -119,6 +129,7 @@
       "ostan": "تهران",
       "shahr": "تهران",
       "id": 11,
+      "userRole": "user",
       "attendance": []
     },
     {
@@ -130,6 +141,7 @@
       "ostan": "تهران",
       "shahr": "تهران",
       "id": 12,
+      "userRole": "user",
       "attendance": []
     },
     {
@@ -141,6 +153,7 @@
       "ostan": "تهران",
       "shahr": "تهران",
       "id": 13,
+      "userRole": "user",
       "attendance": []
     },
     {
@@ -152,6 +165,7 @@
       "ostan": "تهران",
       "shahr": "تهران",
       "id": 14,
+      "userRole": "user",
       "attendance": []
     },
     {
@@ -163,6 +177,7 @@
       "ostan": "مازندران ",
       "shahr": "بابل",
       "id": 15,
+      "userRole": "user",
       "attendance": []
     }
   ]

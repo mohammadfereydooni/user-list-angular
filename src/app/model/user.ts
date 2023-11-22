@@ -7,6 +7,7 @@ export interface UserData {
   jenders:string;
   ostan:string;
   shahr:string;
+  userRole: string;
   attendance:string[];
 }
 

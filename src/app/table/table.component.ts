@@ -15,6 +15,7 @@ import { DialogComponent } from '../dialog/dialog.component';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormControl } from '@angular/forms';
 import { th } from 'date-fns/locale';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-table',
@@ -22,9 +23,11 @@ import { th } from 'date-fns/locale';
   styleUrls: ['./table.component.scss'],
 })
 export class TableComponent implements OnInit {
+  userName!: string | null;
 
-  acces!:boolean;
+  userRole$!: number;
 
+  acces!: boolean;
 
   toppingList: string[] = [
     'شنبه',
@@ -45,20 +48,39 @@ export class TableComponent implements OnInit {
     'manegment',
     'select',
   ];
-  dataSource!: MatTableDataSource<UserData[]>;
+  dataSource!: MatTableDataSource<UserData>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private api: ApiService, public dialog: MatDialog) {}
+  constructor(
+    private api: ApiService,
+    public dialog: MatDialog,
+    private auth: AuthService
+  ) {}
   ngOnInit(): void {
     this.getAll();
+
+    this.auth.userRoles.subscribe({
+      next: (role) => {
+        if (role == 'admin') {
+          this.userRole$ = 1;
+        } else this.userRole$ = 2;
+      },
+    });
+    console.log(this.userRole$);
+
+    this.userName = this.auth.getUsername();
+
+    console.log(this.userName);
   }
 
   getAll() {
     this.api.getUsers().subscribe({
-      next: (res) => {
-        this.dataSource = new MatTableDataSource(res);
+      next: (res: UserData[]) => {
+        this.dataSource = new MatTableDataSource(
+          res.filter((data) => data.name.trim() === this.userName)
+        );
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
       },
@@ -100,5 +122,4 @@ export class TableComponent implements OnInit {
       },
     });
   }
-
 }
